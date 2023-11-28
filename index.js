@@ -23,11 +23,6 @@ full_name: 'Grace Hopper'
 }
 });
 
-
-var admin = require("firebase-admin");
-
-var serviceAccount = require("path/to/serviceAccountKey.json");
-
 const http = require('http')
 const port = 8080
 // Create a server object:
