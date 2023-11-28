@@ -1,3 +1,12 @@
+var admin = require("firebase-admin");
+
+var serviceAccount = require("path/to/serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://exercise-5-28542-default-rtdb.firebaseio.com"
+});
+
 // Get a database reference to our blog
 const { getDatabase } = require('firebase-admin/database');
 const db = getDatabase();
@@ -18,11 +27,6 @@ full_name: 'Grace Hopper'
 var admin = require("firebase-admin");
 
 var serviceAccount = require("path/to/serviceAccountKey.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://exercise-5-28542-default-rtdb.firebaseio.com"
-});
 
 const http = require('http')
 const port = 8080
