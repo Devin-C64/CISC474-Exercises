@@ -50,7 +50,7 @@ document.getElementById("users").innerHTML = "<pre>"+JSON.stringify(JSON.parse(r
 })
 $('#filterButton').click(function(){
 $.ajax({
-url: '/api/v1/' + document.getElementById("filterUserNum").value,
+url: '/api/v1/filterUsers' + document.getElementById("filterUserNum").value,
 type: 'GET',
 success: function(result) {
 console.log("Filter Returned");

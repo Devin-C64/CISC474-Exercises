@@ -20,6 +20,34 @@ app.get('/api/v1/listUsers', function(req, res) {
   });
 });
 
+
+app.get('/api/v1/filterUsers', function(req, res){
+  fs.readFile(__dirname + "/data/" + "users.json", 'utf8', function(err, data){
+      console.log(JSON.parse(data)["user" + req.query["user"]]);
+      res.end(JSON.stringify(JSON.parse(data)["user" + req.query["user"]]));
+  });
+});
+
+app.post('/api/v1/addUser', function(req, res){
+  fs.readFile(__dirname + "/data/" + "users.json", 'utf8', function(err, data){
+      var newUserObject = {
+          "name" : req.query["name"], 
+          "password" : req.query["password"],
+          "profression" : req.query["profession"],
+          "id" : req.query["user"]
+      };
+      JSON.parse(data)["user" + req.query["user"]] = newUserObject;
+
+      fs.writeFile(__dirname + "/data/users.json", data, err => {
+          if (err) { console.error(err); return; }
+      });
+
+  console.log(JSON.parse(data));
+  res.end(data);
+
+  });
+});
+
 app.delete('/api/v1/deleteUser', function(req, res){
   fs.readFile(__dirname + "/data/" + "users.json", 'utf8', function(err, data){
   data = JSON.parse(data);
