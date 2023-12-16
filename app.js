@@ -24,7 +24,7 @@ app.get('/api/v1/listUsers', function(req, res) {
 app.get('/api/v1/filterUsers', function(req, res){
   fs.readFile(__dirname + "/data/" + "users.json", 'utf8', function(err, data){
       console.log(JSON.parse(data)["user" + req.query["user"]]);
-      res.end(JSON.stringify(JSON.parse(data)["user" + req.query["user"]]));
+      res.end(data["user" + req.query["user"]]);
   });
 });
 
